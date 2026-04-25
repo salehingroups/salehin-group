@@ -1,203 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Salehin • Futuristic UX</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      background: radial-gradient(circle at 50% 20%, #1a1a3d 0%, #0a0a1f 70%);
-      overflow-x: hidden;
-    }
-    .neon-text {
-      text-shadow: 0 0 20px #60a5fa,
-                   0 0 40px #60a5fa,
-                   0 0 60px #c084fc;
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(32px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 40px -10px rgba(96, 165, 250, 0.3);
-    }
-    .project-card {
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .project-card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 0 60px -10px rgba(192, 132, 252, 0.5);
-      border-color: rgba(192, 132, 252, 0.4);
-    }
-    .avatar {
-      animation: orbit 20s linear infinite;
-    }
-    @keyframes orbit {
-      from { transform: rotate(0deg) translateX(20px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
-    }
-    .scanline {
-      position: relative;
-    }
-    .scanline::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(transparent, rgba(255,255,255,0.08), transparent);
-      background-size: 100% 300%;
-      animation: scan 4s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes scan {
-      0% { background-position: 0 100%; }
-      100% { background-position: 0 -200%; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salehin Group | Building Tomorrow, Together</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --primary: #00f5ff;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 20%, rgba(0, 245, 255, 0.15) 0%, transparent 70%);
+            animation: pulse 15s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .nav-link {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-link:hover {
+            color: #00f5ff;
+            transform: translateY(-2px);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(0 245 255 / 0.25);
+        }
+
+        .glow {
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, #00f5ff, #7b00ff);
+            border-radius: 9999px;
+        }
+
+        .hologram {
+            position: relative;
+        }
+        
+        .hologram::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            animation: hologram-scan 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes hologram-scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(300%); }
+        }
+
+        .company-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+    </style>
 </head>
-<body class="min-h-screen text-white font-sans">
-
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-8 py-6 flex justify-between items-center">
-      <div class="flex items-center gap-x-3">
-        <div class="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 flex items-center justify-center text-xs font-bold">S</div>
-        <span class="text-2xl font-light tracking-[-2px]">Salehin</span>
-      </div>
-      <div class="hidden md:flex gap-x-8 text-sm font-light">
-        <a href="#works" class="hover:text-blue-300 transition">Works</a>
-        <a href="#about" class="hover:text-blue-300 transition">About</a>
-        <a href="#contact" class="hover:text-blue-300 transition">Contact</a>
-      </div>
-      <a href="#contact" class="px-6 py-3 text-sm border border-blue-400/50 hover:border-blue-400 rounded-2xl transition flex items-center gap-x-2">
-        <span>INITIATE CONTACT</span>
-        <i class="fa-solid fa-arrow-right text-xs"></i>
-      </a>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="min-h-screen flex items-center justify-center relative pt-20">
-    <div class="absolute inset-0 bg-[radial-gradient(#60a5fa_0.8px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
-    
-    <div class="max-w-4xl text-center px-6 relative z-10">
-      <div class="inline-flex items-center gap-x-2 px-5 py-2 rounded-3xl glass mb-8 text-xs tracking-widest">
-        <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-        DHaka • 2026 • ONLINE
-      </div>
-
-      <div class="relative mx-auto mb-10 w-52 h-52">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-[4rem] blur-3xl"></div>
-        <div class="avatar relative w-52 h-52 mx-auto rounded-3xl overflow-hidden border-2 border-white/30 glass flex items-center justify-center text-8xl shadow-2xl">
-          👨‍🚀
-          <!-- Replace with your photo: <img src="avatar.jpg" class="w-full h-full object-cover"> -->
+<body class="bg-black text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-cyan-500/20">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-2xl flex items-center justify-center text-xl font-bold heading-font">SG</div>
+                <div>
+                    <span class="text-2xl font-bold heading-font tracking-tighter">SALEHIN</span>
+                    <span class="text-cyan-400 text-2xl font-bold heading-font tracking-tighter">GROUP</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#companies" class="nav-link">COMPANIES</a>
+                <a href="#vision" class="nav-link">VISION 2035</a>
+                <a href="#sectors" class="nav-link">SECTORS</a>
+                <a href="#contact" class="nav-link">CONNECT</a>
+            </div>
+            
+            <a href="mailto:mail.salehingroup@gmail.com" 
+               class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 transition-colors text-black font-semibold rounded-2xl flex items-center gap-2 text-sm">
+                <i class="fas fa-paper-plane"></i>
+                GET IN TOUCH
+            </a>
         </div>
-      </div>
+    </nav>
 
-      <h1 class="text-6xl md:text-7xl font-light tracking-[-3px] leading-none neon-text mb-6">
-        DESIGNING THE<br>FUTURE OF<br>INTERACTION
-      </h1>
-      
-      <p class="text-xl text-white/70 max-w-lg mx-auto mb-12">
-        UX/UI Designer crafting immersive digital experiences from Dhaka. 
-        Glassmorphism • Cyber Interfaces • Human-Centered Futures.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#works" 
-           class="px-10 py-5 bg-white text-zinc-950 font-medium rounded-3xl flex items-center justify-center gap-x-3 hover:scale-105 transition">
-          EXPLORE MISSIONS
-          <i class="fa-solid fa-rocket"></i>
-        </a>
-        <a href="#contact" 
-           class="px-10 py-5 border border-white/40 hover:border-purple-400 rounded-3xl font-medium transition">
-          TRANSMIT MESSAGE
-        </a>
-      </div>
-    </div>
-
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center text-xs tracking-widest text-white/40">
-      <div>SCROLL TO ENTER</div>
-      <i class="fa-solid fa-chevron-down mt-2 animate-bounce"></i>
-    </div>
-  </section>
-
-  <!-- Selected Works -->
-  <section id="works" class="py-24 px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-16">
-      <div class="inline px-6 py-2 text-xs tracking-[3px] border border-purple-400/30 rounded-full">PROJECT ARCHIVE 2025–2026</div>
-      <h2 class="text-5xl font-light tracking-tight mt-6">Selected Missions</h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Card 1 -->
-      <div class="project-card glass rounded-3xl overflow-hidden scanline border border-white/10">
-        <div class="h-72 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center text-7xl">🌌</div>
-        <div class="p-8">
-          <div class="uppercase text-xs tracking-widest text-blue-400 mb-2">Fintech • Mobile</div>
-          <h3 class="text-2xl font-light mb-3">NovaVault — Next-Gen Banking</h3>
-          <p class="text-white/70 text-sm">Immersive financial experience with biometric flows and holographic dashboards.</p>
+    <!-- HERO SECTION -->
+    <section class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-5 py-2 bg-white/10 backdrop-blur-md rounded-full text-sm border border-cyan-400/30">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    EST. 2026 • BANGLADESH
+                </div>
+                
+                <h1 class="text-7xl md:text-8xl font-black heading-font leading-none tracking-tighter">
+                    BUILDING<br>THE <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">FUTURE</span><br>TOGETHER
+                </h1>
+                
+                <p class="text-xl text-gray-300 max-w-lg">
+                    A next-generation diversified conglomerate pioneering innovation across 
+                    technology, infrastructure, manufacturing, and global trade.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#companies" 
+                       class="px-8 py-4 bg-white text-black font-semibold rounded-3xl hover:bg-cyan-400 hover:text-black transition-all flex items-center gap-3 group">
+                        EXPLORE OUR ECOSYSTEM
+                        <i class="fas fa-arrow-right group-active:rotate-45 transition-transform"></i>
+                    </a>
+                    
+                    <a href="http://salehingroup.com" target="_blank"
+                       class="px-8 py-4 border border-cyan-400/50 hover:border-cyan-400 rounded-3xl font-medium flex items-center gap-3 transition-all">
+                        <i class="fas fa-globe"></i>
+                        VISIT WEBSITE
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 text-sm">
+                    <div>
+                        <div class="text-cyan-400 font-mono text-3xl font-bold">14</div>
+                        <div class="text-gray-400">Subsidiaries</div>
+                    </div>
+                    <div>
+                        <div class="text-cyan-400 font-mono text-3xl font-bold">10+</div>
+                        <div class="text-gray-400">Industries</div>
+                    </div>
+                    <div>
+                        <div class="text-cyan-400 font-mono text-3xl font-bold">∞</div>
+                        <div class="text-gray-400">Possibilities</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Futuristic Visual -->
+            <div class="relative flex justify-center items-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-600/20 rounded-[4rem] blur-3xl"></div>
+                    <div class="hologram bg-zinc-900/80 border border-cyan-400/30 backdrop-blur-2xl rounded-3xl p-8 glow">
+                        <div class="aspect-square bg-black rounded-2xl flex items-center justify-center relative overflow-hidden">
+                            <div class="text-center">
+                                <div class="text-[120px] font-black heading-font tracking-[-10px] text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-300">SG</div>
+                                <div class="text-cyan-400 text-sm tracking-[6px] font-medium mt-[-20px]">SALEHIN GROUP</div>
+                            </div>
+                            
+                            <!-- Floating elements -->
+                            <div class="absolute top-8 right-8 w-6 h-6 border border-cyan-400 rounded-full flex items-center justify-center text-[10px] animate-spin-slow">⚡</div>
+                            <div class="absolute bottom-12 left-12 text-xs px-3 py-1 bg-white/10 backdrop-blur rounded-full border border-white/20">2035 VISION ACTIVE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="project-card glass rounded-3xl overflow-hidden scanline border border-white/10">
-        <div class="h-72 bg-gradient-to-br from-emerald-600 to-cyan-600 flex items-center justify-center text-7xl">🛒</div>
-        <div class="p-8">
-          <div class="uppercase text-xs tracking-widest text-emerald-400 mb-2">E-commerce • Bangladesh</div>
-          <h3 class="text-2xl font-light mb-3">Bazaar Nebula — Local Commerce</h3>
-          <p class="text-white/70 text-sm">Seamless marketplace platform blending cultural identity with futuristic UX.</p>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center gap-2 text-xs tracking-widest">
+            <div class="text-cyan-400">SCROLL TO EXPLORE</div>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-cyan-400 to-transparent"></div>
         </div>
-      </div>
+    </section>
 
-      <!-- Card 3 -->
-      <div class="project-card glass rounded-3xl overflow-hidden scanline border border-white/10">
-        <div class="h-72 bg-gradient-to-br from-amber-600 to-orange-600 flex items-center justify-center text-7xl">📡</div>
-        <div class="p-8">
-          <div class="uppercase text-xs tracking-widest text-amber-400 mb-2">SaaS • Dashboard</div>
-          <h3 class="text-2xl font-light mb-3">Pulse Core — Analytics OS</h3>
-          <p class="text-white/70 text-sm">Real-time data visualization in a liquid glass interface.</p>
+    <!-- MISSION & VISION -->
+    <section id="about" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-5">
+                    <div class="sticky top-28">
+                        <span class="text-cyan-400 text-sm font-medium tracking-widest">OUR PURPOSE</span>
+                        <h2 class="text-5xl heading-font font-bold mt-3 leading-none">Tomorrow<br>Starts Here</h2>
+                        <div class="mt-8 text-gray-400 text-lg">
+                            Founded in 2026, Salehin Group is a forward-thinking Bangladeshi conglomerate 
+                            built for the digital age and beyond.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 space-y-12">
+                    <!-- Mission -->
+                    <div class="card-hover bg-zinc-900 border border-zinc-700 rounded-3xl p-10">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-2xl flex items-center justify-center text-2xl">🎯</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold heading-font">Mission</h3>
+                                <p class="mt-4 text-gray-300 leading-relaxed text-lg">
+                                    To deliver high-quality products and services across diverse industries while 
+                                    fostering innovation, integrity, and sustainable growth for clients, partners, and communities.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Vision -->
+                    <div class="card-hover bg-zinc-900 border border-zinc-700 rounded-3xl p-10">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-12 h-12 flex-shrink-0 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center text-2xl">🔭</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold heading-font">Vision 2035</h3>
+                                <p class="mt-4 text-gray-300 leading-relaxed text-lg">
+                                    To become a globally recognized business group known for excellence, diversification, 
+                                    and leadership in multiple industries — setting new standards for innovation from Bangladesh to the world.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer / Contact -->
-  <footer id="contact" class="glass border-t border-white/10 py-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-5xl font-light tracking-tight mb-6">Ready to launch the next mission?</h2>
-      <p class="text-white/60 mb-10 max-w-md mx-auto">
-        Open for freelance collaborations and visionary projects in 2026.
-      </p>
-      
-      <div class="flex flex-wrap justify-center gap-6">
-        <a href="mailto:mail.salehingroup@gmail.com" 
-           class="flex items-center gap-x-3 px-8 py-5 glass rounded-3xl hover:bg-white/10 transition">
-          <i class="fa-solid fa-envelope text-blue-400"></i>
-          <span>mail.salehingroup@gmail.com</span>
-        </a>
-        <a href="tel:+8801755304499" 
-           class="flex items-center gap-x-3 px-8 py-5 glass rounded-3xl hover:bg-white/10 transition">
-          <i class="fa-solid fa-phone text-purple-400"></i>
-          <span>+880 17 5530 4499</span>
-        </a>
-      </div>
-
-      <div class="mt-20 pt-10 border-t border-white/10 text-xs text-white/40 flex flex-col md:flex-row justify-between items-center">
-        <div>© Salehin • Futuristic UX Designer • Dhaka, Bangladesh 2026</div>
-        <div class="flex gap-x-6 mt-6 md:mt-0">
-          <a href="#" class="hover:text-white">𝕏</a>
-          <a href="#" class="hover:text-white">LinkedIn</a>
-          <a href="#" class="hover:text-white">Behance</a>
-          <a href="#" class="hover:text-white">Dribbble</a>
+    <!-- GROUP COMPANIES -->
+    <section id="companies" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-6 py-2 bg-cyan-500/10 text-cyan-400 rounded-full text-sm font-medium">OUR ECOSYSTEM</span>
+                <h2 class="text-5xl heading-font font-bold mt-4">14 Companies. One Vision.</h2>
+                <p class="text-gray-400 mt-3 max-w-2xl mx-auto">A powerful network of specialized entities working in harmony to shape the future.</p>
+            </div>
+            
+            <div class="company-grid">
+                <!-- You can expand this with all 14, but showing a few highlighted ones for brevity -->
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="text-cyan-400 text-3xl mb-2">💻</div>
+                            <h3 class="font-bold text-2xl heading-font">Salehin Technologies</h3>
+                            <p class="text-sm text-emerald-400">Digital Transformation</p>
+                        </div>
+                        <div class="text-xs bg-zinc-800 px-3 py-1 rounded-full">Core Tech</div>
+                    </div>
+                    <p class="mt-6 text-gray-400 text-sm leading-relaxed">Software • AI • Cloud • Cybersecurity • Digital Infrastructure</p>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="text-cyan-400 text-3xl mb-2">🏗️</div>
+                            <h3 class="font-bold text-2xl heading-font">Salehin Builders</h3>
+                            <p class="text-sm text-amber-400">Infrastructure</p>
+                        </div>
+                        <div class="text-xs bg-zinc-800 px-3 py-1 rounded-full">Construction</div>
+                    </div>
+                    <p class="mt-6 text-gray-400 text-sm leading-relaxed">Modern construction, smart cities, and large-scale infrastructure projects.</p>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="text-cyan-400 text-3xl mb-2">🌍</div>
+                            <h3 class="font-bold text-2xl heading-font">Salehin International</h3>
+                            <p class="text-sm text-sky-400">Global Trade</p>
+                        </div>
+                        <div class="text-xs bg-zinc-800 px-3 py-1 rounded-full">Export</div>
+                    </div>
+                    <p class="mt-6 text-gray-400 text-sm leading-relaxed">Bridging Bangladesh with international markets across Asia, Europe &amp; beyond.</p>
+                </div>
+                
+                <div class="card-hover bg-zinc-900 border border-zinc-800 rounded-3xl p-8 group">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="text-cyan-400 text-3xl mb-2">🚀</div>
+                            <h3 class="font-bold text-2xl heading-font">Salehin Ventures</h3>
+                            <p class="text-sm text-purple-400">Innovation Fund</p>
+                        </div>
+                        <div class="text-xs bg-zinc-800 px-3 py-1 rounded-full">Startup</div>
+                    </div>
+                    <p class="mt-6 text-gray-400 text-sm leading-relaxed">Fueling the next generation of Bangladeshi and regional startups.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" onclick="alert('Full list of all 14 subsidiaries available in the complete company deck. Contact us for details.')" 
+                   class="inline-flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+                    VIEW ALL 14 COMPANIES 
+                    <span class="text-2xl">→</span>
+                </a>
+            </div>
         </div>
-        <div class="mt-6 md:mt-0">Building tomorrow, one interface at a time</div>
-      </div>
-    </div>
-  </footer>
+    </section>
 
+    <!-- SECTORS -->
+    <section id="sectors" class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-5xl heading-font font-bold">Operating Across<br>Tomorrow's Industries</h2>
+                    <div class="mt-8 space-y-6">
+                        <div class="flex gap-6">
+                            <div class="text-4xl">💻</div>
+                            <div>
+                                <div class="font-semibold">Technology &amp; Digital</div>
+                                <div class="text-gray-400">AI, Software, Cybersecurity, Cloud Solutions</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl">🏗️</div>
+                            <div>
+                                <div class="font-semibold">Construction &amp; Infrastructure</div>
+                                <div class="text-gray-400">Smart Buildings, Roads, Urban Development</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl">📦</div>
+                            <div>
+                                <div class="font-semibold">Logistics &amp; Global Trade</div>
+                                <div class="text-gray-400">Supply Chain, Import/Export, Warehousing</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl">🏭</div>
+                            <div>
+                                <div class="font-semibold">Manufacturing &amp; Industry</div>
+                                <div class="text-gray-400">Consumer Goods, Industrial Production</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-zinc-900 to-black border border-cyan-500/10 rounded-3xl p-10">
+                    <div class="text-cyan-400 text-sm mb-4">KEY STRENGTHS</div>
+                    <ul class="space-y-5 text-lg">
+                        <li class="flex items-center gap-3"><span class="text-emerald-400">✔</span> Fully Integrated Ecosystem</li>
+                        <li class="flex items-center gap-3"><span class="text-emerald-400">✔</span> Cross-Subsidiary Synergy</li>
+                        <li class="flex items-center gap-3"><span class="text-emerald-400">✔</span> Strong Focus on Sustainability</li>
+                        <li class="flex items-center gap-3"><span class="text-emerald-400">✔</span> Digital-First Operations</li>
+                        <li class="flex items-center gap-3"><span class="text-emerald-400">✔</span> Global Expansion Ambition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / FOOTER -->
+    <footer id="contact" class="bg-black border-t border-cyan-900 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-2xl flex items-center justify-center">SG</div>
+                        <span class="text-2xl font-bold heading-font">Salehin Group</span>
+                    </div>
+                    <p class="text-gray-400">Building Tomorrow, Together</p>
+                    <div class="mt-6 text-sm text-gray-500">
+                        Dhaka, Bangladesh<br>
+                        Est. 2026
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-sm uppercase tracking-widest text-gray-500 mb-4">Contact</div>
+                    <div class="space-y-3 text-lg">
+                        <a href="tel:+8801755304499" class="block hover:text-cyan-400 transition-colors">+880 17 5530 4499</a>
+                        <a href="mailto:mail.salehingroup@gmail.com" class="block hover:text-cyan-400 transition-colors">mail.salehingroup@gmail.com</a>
+                        <a href="http://salehingroup.com" target="_blank" class="block hover:text-cyan-400 transition-colors">salehingroup.com</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-sm uppercase tracking-widest text-gray-500 mb-4">Follow Our Journey</div>
+                    <div class="flex gap-5 text-2xl">
+                        <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+                    
+                    <div class="mt-10 text-xs text-gray-600">
+                        © 2026 Salehin Group of Companies<br>
+                        All Rights Reserved • Confidential
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already included via CDN
+        console.log('%cSalehin Group - Futuristic Portfolio Loaded Successfully 🚀', 'color:#00f5ff; font-family:monospace;');
+    </script>
 </body>
 </html>
